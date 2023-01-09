@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storage Room - Login</title>
+    <title>Storage Room - Register</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/authorization.css') }}">
-    <script src="{{ url_for('static', filename='js/login.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/register.js') }}" defer></script>
 </head>
 {% endblock %}
 {% block content %}
 <body>
     <div class="login-form">
         <div class="auth-type">
-            <span>LOG IN</span>
+            <span id="login">LOG IN</span>
             <span id="register">REGISTER</span>
         </div>
         <form action="" method="POST">
@@ -28,16 +28,25 @@
                 <span class="color-tab"></span>
                 <input name="password" type="password">
             </div>
-            <button id="submit-btn" type="submit">LOG IN</button>
-            {% with messages = get_flashed_messages() %}
+            <label for="confirm-password">CONFIRM PASSWORD</label>
+            <div class="input-wrapper">
+                <span class="color-tab"></span>
+                <input name="confirm-password" type="password">
+            </div>
+            <label for="email">E-MAIL</label>
+            <div class="input-wrapper">
+                <span class="color-tab"></span>
+                <input name="email" type="email">
+            </div>
+            <button id="submit-btn" type="submit">REGISTER</button>
+            {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
-                    {% for message in messages %}
-                        <p class="auth-fail">{{ message }}</p>
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
                     {% endfor %}
                 {% endif %}
             {% endwith %}
         </form>
-        <p class="forgot-pass">Forgot password?</p>
     </div>
     <div class="custom-alert">
         <p>Please, fullfill all fields!</p>

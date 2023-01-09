@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--black);
+    background: linear-gradient(140deg, rgba(34,38,41,1) 20%, rgba(14,16,17,1) 70%);
 }
 
 .login-form {
@@ -116,9 +116,47 @@ button:hover {
     transition: .5s ease-out;
 }
 
-.auth-fail {
+.auth-fail, .auth-success {
     width: 100%;
     text-align: center;
     color: var(--red);
     margin-top: 1.5em;
+}
+
+.auth-success {
+    color: var(--green);
+}
+
+.custom-alert {
+    width: 20em;
+    height: 7em;
+    left: calc(50% - 10em);
+    position: absolute;
+    display: none;
+    border: 1px solid var(--olive);
+    border-radius: 7px;
+    padding: 1em;
+    box-shadow: 0 0 5px var(--green);
+    margin-bottom: 15em;
+}
+
+.custom-alert p {
+    font-size: 1.3rem;
+    color: var(--white);
+    text-align: center;
+}
+
+.custom-alert button {
+    margin-top: 1em;
+}
+
+@media screen and (max-height: 700px) {
+
+    body {
+        align-items: end;
+    }
+
+    .custom-alert p {
+        font-size: 1.1rem;
+    }
 }
