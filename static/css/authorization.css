@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+:root {
+    --olive: #61892F;
+    --green: #86C232;
+    --black: #222629;
+    --gray: #474B4F;
+    --grey: #6B6E70;
+    --white: #FFF;
+    --red: #E21D12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(140deg, rgba(34,38,41,1) 20%, rgba(14,16,17,1) 70%);
+}
+
+.login-form {
+    width: 20em;
+    min-height: 27.5em;
+    padding: 2em;
+    background-color: var(--gray);
+    border-radius: 5px;
+    color: var(--white);
+    position: relative;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+}
+
+.auth-type {
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+.auth-type span {
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+.auth-type span:hover {
+    opacity: .7;
+    transition: .5s ease-out;
+}
+
+.auth-type span:nth-child(1) {
+    border-bottom: 2px solid var(--olive);
+}
+
+.input-wrapper {
+    height: 1.8em;
+    display: flex;
+    margin: .5em 0 1.5em 0;
+}
+
+label {
+    font-size: .9rem;
+}
+
+.color-tab {
+    height: 100%;
+    width: .5em;
+    background-color: var(--green);
+}
+
+.input-wrapper input {
+    height: 100%;
+    width: 90%;
+    outline: none;
+    border: none;
+    text-indent: .5em;
+    opacity: .7;
+}
+
+button {
+    margin-top: 15%;
+    margin-left: calc(17.5% + .8em);
+    width: 55%;
+    padding: .8em;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--green);
+    border: none;
+    font-size: .9rem;
+}
+
+button:hover {
+    background-color: var(--olive);
+    transition: .5s ease-out;
+}
+
+.forgot-pass {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    opacity: .7;
+    cursor: pointer;
+}
+
+.forgot-pass:hover {
+    opacity: 1;
+    transition: .5s ease-out;
+}
+
+.auth-fail, .auth-success {
+    width: 100%;
+    text-align: center;
+    color: var(--red);
+    margin-top: 1.5em;
+}
+
+.auth-success {
+    color: var(--green);
+}
+
+.custom-alert {
+    width: 20em;
+    height: 7em;
+    left: calc(50% - 10em);
+    position: absolute;
+    display: none;
+    border: 1px solid var(--olive);
+    border-radius: 7px;
+    padding: 1em;
+    box-shadow: 0 0 5px var(--green);
+    margin-bottom: 15em;
+}
+
+.custom-alert p {
+    font-size: 1.3rem;
+    color: var(--white);
+    text-align: center;
+}
+
+.custom-alert button {
+    margin-top: 1em;
+}
+
+@media screen and (max-height: 700px) {
+
+    body {
+        align-items: end;
+    }
+
+    .custom-alert p {
+        font-size: 1.1rem;
+    }
+}

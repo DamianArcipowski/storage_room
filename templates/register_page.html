@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Room - Register</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/authorization.css') }}">
+    <script src="{{ url_for('static', filename='js/register.js') }}" defer></script>
+</head>
+{% endblock %}
+{% block content %}
+<body>
+    <div class="login-form">
+        <div class="auth-type">
+            <span id="login">LOG IN</span>
+            <span id="register">REGISTER</span>
+        </div>
+        <form action="" method="POST">
+            <label for="login">USERNAME</label>
+            <div class="input-wrapper">
+                <span class="color-tab"></span>
+                <input name="login" type="text">
+            </div>
+            <label for="password">PASSWORD</label>
+            <div class="input-wrapper">
+                <span class="color-tab"></span>
+                <input name="password" type="password">
+            </div>
+            <label for="confirm-password">CONFIRM PASSWORD</label>
+            <div class="input-wrapper">
+                <span class="color-tab"></span>
+                <input name="confirm-password" type="password">
+            </div>
+            <label for="email">E-MAIL</label>
+            <div class="input-wrapper">
+                <span class="color-tab"></span>
+                <input name="email" type="email">
+            </div>
+            <button id="submit-btn" type="submit">REGISTER</button>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+    <div class="custom-alert">
+        <p>Please, fullfill all fields!</p>
+        <button id="confirm-btn" type="button">Confirm</button>
+    </div>
+</body>
+{% endblock %}
+</html>
