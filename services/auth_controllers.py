@@ -1,9 +1,10 @@
 from gdastudio import SQLConnectionPG, SQLServer
 import json
-from datetime import datetime as dt
+from datetime import datetime as dt, timedelta
 import hashlib
 import smtplib
 import ssl
+from email.message import EmailMessage
 
 with open('config/sql.json', 'r') as config_file:
     file = json.load(config_file)
@@ -62,11 +63,42 @@ def send_email_with_link_to_reset_password(receiver, link):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
         server.login(credentials['login'], credentials['password'])
         
-        message = """\
-            Subject: Reset your password
+        message = EmailMessage()
+        message['Subject'] = 'Link to reset your password'
+        message['From'] = credentials['login']
+        message['To'] = receiver
+        message.set_content("""Hello, \n
+You can find a link to reset your password below:
+"""+link+"""
+It will be active for 24 hours.
+If you didn't request about changing your password, please ignore this message.""")
             
-            
-            Your link to reset password in Storage Room App: """+link+""".
-            If you didn't request changing your password, please ignore this message."""
-            
-        server.sendmail(credentials['login'], receiver, message)
+        server.send_message(message)
+        
+def is_link_to_reset_password_still_active(link_id):
+    conn = SQLConnectionPG(server).conn
+    cursor = conn.cursor()
+    cursor.execute("""SELECT current_timestamp - request_date FROM store.change_password_requests WHERE id = '"""+link_id+"""'""")
+    interval = cursor.fetchone()
+    conn.close()
+    
+    if timedelta(hours = 24) > interval[0]:
+        return True
+    else:
+        return False
+    
+def get_email_which_matches_reset_link_id(link_id):
+    conn = SQLConnectionPG(server).conn
+    cursor = conn.cursor()
+    cursor.execute("""Select email FROM store.change_password_requests WHERE id = '"""+link_id+"""'""")
+    email = cursor.fetchone()
+    conn.close()
+    return email[0]
+    
+def update_new_password_after_reset(link_id, new_password):
+    email = get_email_which_matches_reset_link_id(link_id)
+    conn = SQLConnectionPG(server).conn
+    cursor = conn.cursor()
+    cursor.execute("""Update store.users SET password = '"""+new_password+"""' WHERE email = '"""+email+"""'""")
+    conn.commit()
+    conn.close()
