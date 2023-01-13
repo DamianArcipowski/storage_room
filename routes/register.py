@@ -12,7 +12,7 @@ def register():
         confirm_password = request.form['confirm-password']
         email = request.form['email']
         
-        if not is_username_in_database(username):
+        if not is_username_in_database(username) and not is_email_in_database(email):
             if password == confirm_password:
                 hashed_password = generate_password_hash(password, salt_length=4)
                 add_new_user(username, hashed_password, email)
@@ -20,6 +20,6 @@ def register():
             else:
                 flash("Passwords doesn't match each other!", 'auth-fail')
         else:
-            flash('Username already exists in database!', 'auth-fail')
+            flash('Username or e-mail already exists in database!', 'auth-fail')
             
     return render_template('register_page.html')

@@ -150,6 +150,15 @@ button:hover {
     margin-top: 1em;
 }
 
+.reset-pass-info {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.login-form.form-recovery {
+    min-height: 17.5em;
+}
+
 @media screen and (max-height: 700px) {
 
     body {
