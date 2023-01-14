@@ -15,7 +15,7 @@ def login():
         
         if is_username_in_database(login):
             if check_password_hash(get_user_password(login), password):
-                session['loggedin'] == True
+                session['loggedin'] = True
                 return redirect(url_for('overview'))
             else:
                 flash('Incorrect password! Please, try again.')
