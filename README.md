@@ -1,5 +1,5 @@
 # storage_room
-Simple project of storage room enabling control of delivering and issued goods.
+Project of storage room enabling control of delivering and issued goods.
 
 # How to start
 First we have to create an virtual environment and activate it:
