@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Room - Overview</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipients.css') }}">
+    <script src="{{ url_for('static', filename='js/recipients.js') }}" defer></script>
+</head>
+{% endblock %}
+{% block content %}
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('overview') }}">Overview</a></li>
+            <li><a href="{{ url_for('recipients') }}">Recipients</a></li>
+            <li><a href="{{ url_for('issuing') }}">Issue goods</a></li>
+            <li><a href="{{ url_for('suppliers') }}">Supplier orders</a></li>
+            <li><a href="{{ url_for('account') }}">My account</a></li>
+        </ul>
+        <a href="{{ url_for('login') }}"><i class="bi bi-box-arrow-right"></i></a>
+    </nav>
+    <div class="container">
+        <p class="title">Add new recipient</p>
+        <div class="user-inserter">
+            <form action="" method="POST">
+                <label for="">Name</label>
+                <input name="name" type="text">
+                <label for="">Surname</label>
+                <input name="surname" type="text">
+                <label for="">UserID</label>
+                <input name="uid" type="number">
+                <label for="">Departament</label>
+                <input name="departament" type="text">
+                <button name="new-recipient" value="insert" type="submit">ADD</button> 
+            </form>
+        </div>
+        <p class="title dbtitle">Recipients database</p>
+        <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname <i class="bi bi-search"></i> <br> <input type="text" class="search-field"></th>
+                    <th>UserID</th>
+                    <th>Departament</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipient in recipients %}
+                    <tr>
+                        <td>{{ recipient[0] }}</td>
+                        <td>{{ recipient[1] }}</td>
+                        <td>{{ recipient[2] }}</td>
+                        <td>{{ recipient[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>

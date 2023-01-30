@@ -1,0 +1,144 @@
+@import 'general.css';
+
+.container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1.4rem;
+    color: var(--white);
+    background-color: var(--olive);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 25rem;
+    text-align: center;
+}
+
+.user-inserter {
+    width: 25em;
+    min-height: 25em;
+    margin-inline: auto;
+    border: 1px solid var(--olive);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 3em;
+}
+
+.user-inserter form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--white);
+}
+
+.user-inserter label {
+    margin: 1.5em 0 .4em 0;
+}
+
+.user-inserter input {
+    width: 60%;
+    padding: .4em 0;
+    outline: none;
+    border: 1px solid var(--olive);
+    border-radius: 5px;
+    text-indent: .5em;
+    opacity: .7;
+}
+
+.user-inserter button {
+    width: 30%;
+    padding: .5em;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--olive);
+    border: 1px solid var(--olive);
+    margin-top: 2em;
+    border-radius: 5px;
+    font-size: .9rem;
+}
+
+.user-inserter button:hover {
+    background-color: var(--green);
+    transition: .5s ease-out;
+}
+
+.dbtitle {
+    width: 60rem;
+}
+
+.table-wrapper {
+    width: 60em;
+    height: 20em;
+    overflow-y: scroll;
+    border: 1px solid var(--olive);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+}
+
+table thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--green);
+    color: var(--white);
+}
+
+table th {
+    padding: .2em;
+
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: var(--white);
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--grey);
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: auto;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: var(--olive);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--green);
+    border-radius: 10px;
+}
+
+.bi-search::before {
+    transform: translateX(5px);
+    cursor: pointer;
+}
+
+table th:nth-child(2) {
+    position: relative;
+}
+
+.search-field {
+    display: none;
+    outline: none;
+    visibility: hidden;
+    opacity: .7;
+    border-radius: 5px;
+    border: 1px solid var(--grey);
+    padding: .1em;
+    margin: .2em;
+}
+
+.visible-magnifier {
+    display: inline-block;
+}
