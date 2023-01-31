@@ -17,12 +17,38 @@
             <li><a href="{{ url_for('overview') }}">Overview</a></li>
             <li><a href="{{ url_for('recipients') }}">Recipients</a></li>
             <li><a href="{{ url_for('issuing') }}">Issue goods</a></li>
-            <li><a href="{{ url_for('suppliers') }}">Supplier orders</a></li>
             <li><a href="{{ url_for('account') }}">My account</a></li>
         </ul>
         <a href="{{ url_for('login') }}"><i class="bi bi-box-arrow-right"></i></a>
     </nav>
-    <div class="container"></div>
+    <div class="container">
+        <p class="title">Check goods availability</p>
+        <div class="categories-list">
+            <ul>
+                <li><span>T-shirts</span> <input type="checkbox"></li>
+                <li><span>Bottoms</span> <input type="checkbox"></li>
+                <li><span>Shoes</span> <input type="checkbox"></li>
+                <li><span>Fleeces</span> <input type="checkbox"></li>
+                <li><span>Office supplies</span> <input type="checkbox"></li>
+            </ul>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Size</th>
+                        <th>Color</th>
+                        <th>EAN</th>
+                        <th>Unit</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 {% endblock %}
 </html>
