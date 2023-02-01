@@ -5,6 +5,7 @@
     justify-content: start;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 2em;
 }
 
 .title {
@@ -60,6 +61,7 @@
     overflow-y: scroll;
     border: 1px solid var(--olive);
     border-radius: 5px;
+    margin-bottom: 2em;
 }
 
 table {
@@ -99,4 +101,27 @@ table tbody tr:nth-child(even) {
 .table-wrapper::-webkit-scrollbar-thumb {
     background: var(--green);
     border-radius: 10px;
+}
+
+.title.new-goods {
+    width: 25rem;
+}
+
+.goods-inserter {
+    width: 25em;
+    height: 20em;
+    border: 1px solid var(--olive);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.goods-inserter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.goods-inserter label {
+    color: var(--white);
 }
