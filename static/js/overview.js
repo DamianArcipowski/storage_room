@@ -62,3 +62,21 @@ function clearTableBody() {
         tableBody.removeChild(existingRows[i]);
     }
 }
+
+const obligatoryNewGoodInputs = document.querySelectorAll('.obligatory');
+const addNewItemButton = document.getElementById("add-item-button");
+
+addNewItemButton.addEventListener('click', e => {
+    obligatoryNewGoodInputs.forEach(input => {
+
+        if (input.value == '') {
+            e.preventDefault();
+            input.style.border = '1px solid #E21D12';
+            input.style.backgroundColor = '#FCD8D6';
+        }
+    })
+})
+
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}

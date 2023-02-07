@@ -50,20 +50,34 @@
         </div>
         <p class="title new-goods">Insert new goods</p>
         <div class="goods-inserter">
-            <form action="" method="PUT">
-                <label for="category">Category</label>
-                <input name="category" type="text">
+            <form action="" method="POST">
+                <label for="category">Category <span>*</span></label>
+                <select class="obligatory" name="category">
+                    <option value="T-shirts">T-shirts</option>
+                    <option value="Bottoms">Bottoms</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Fleeces">Fleeces</option>
+                    <option value="Office supplies">Office supplies</option>
+                </select>
                 <label for="size">Size</label>
                 <input name="size" type="text">
                 <label for="color">Color</label>
                 <input name="color" type="text">
-                <label for="sku">Sku</label>
-                <input name="sku" type="text">
-                <label for="unit">Unit</label>
-                <input name="unit" type="text">
-                <label for="amount">Amount</label>
-                <input name="amount" type="text">
+                <label for="sku">Sku <span>*</span></label>
+                <input class="obligatory" name="sku" type="text">
+                <label for="unit">Unit <span>*</span></label>
+                <input class="obligatory" name="unit" type="text">
+                <label for="amount">Amount <span>*</span></label>
+                <input class="obligatory" name="amount" type="number" min="0">
+                <button id="add-item-button" type="submit">Add item</button>
             </form>
+            {% with messages = get_flashed_messages(with_categories = true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </div>
     </div>
 </body>
