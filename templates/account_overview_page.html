@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Room - My account</title>
+</head>
+{% endblock %}
+{% block content %}
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('overview') }}">Overview</a></li>
+            <li><a href="{{ url_for('recipients') }}">Recipients</a></li>
+            <li><a href="{{ url_for('issuing') }}">Issue goods</a></li>
+            <li><a href="{{ url_for('account') }}">My account</a></li>
+        </ul>
+        <a href="{{ url_for('login') }}"><i class="bi bi-box-arrow-right"></i></a>
+    </nav>
+    <div class="container">
+       
+    </div>
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Room - Overview</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/overview.css') }}">
+    <script src="{{ url_for('static', filename='js/overview.js') }}" defer></script>
+</head>
+{% endblock %}
+{% block content %}
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('overview') }}">Overview</a></li>
+            <li><a href="{{ url_for('recipients') }}">Recipients</a></li>
+            <li><a href="{{ url_for('issuing') }}">Issue goods</a></li>
+            <li><a href="{{ url_for('account') }}">My account</a></li>
+        </ul>
+        <a href="{{ url_for('login') }}"><i class="bi bi-box-arrow-right"></i></a>
+    </nav>
+    <div class="container">
+        <p class="title">Check goods availability</p>
+        <div class="categories-list">
+            <ul>
+                <li><span>T-shirts</span> <input type="checkbox"></li>
+                <li><span>Bottoms</span> <input type="checkbox"></li>
+                <li><span>Shoes</span> <input type="checkbox"></li>
+                <li><span>Fleeces</span> <input type="checkbox"></li>
+                <li><span>Office supplies</span> <input type="checkbox"></li>
+            </ul>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Size</th>
+                        <th>Color</th>
+                        <th>SKU</th>
+                        <th>Unit</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <p class="title new-goods">Insert new goods</p>
+        <div class="goods-inserter">
+            <form action="" method="POST">
+                <label for="category">Category <span>*</span></label>
+                <select class="obligatory" name="category">
+                    <option value="T-shirts">T-shirts</option>
+                    <option value="Bottoms">Bottoms</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Fleeces">Fleeces</option>
+                    <option value="Office supplies">Office supplies</option>
+                </select>
+                <label for="size">Size</label>
+                <input name="size" type="text">
+                <label for="color">Color</label>
+                <input name="color" type="text">
+                <label for="sku">Sku <span>*</span></label>
+                <input class="obligatory" name="sku" type="text">
+                <label for="unit">Unit <span>*</span></label>
+                <input class="obligatory" name="unit" type="text">
+                <label for="amount">Amount <span>*</span></label>
+                <input class="obligatory" name="amount" type="number" min="0">
+                <button id="add-item-button" type="submit">Add item</button>
+            </form>
+            {% with messages = get_flashed_messages(with_categories = true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>
