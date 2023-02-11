@@ -61,7 +61,6 @@
     overflow-y: scroll;
     border: 1px solid var(--olive);
     border-radius: 5px;
-    margin-bottom: 2em;
 }
 
 table {
@@ -103,11 +102,12 @@ table tbody tr:nth-child(even) {
     border-radius: 10px;
 }
 
-.title.new-goods {
+.title.new-goods, .title.update-goods {
     width: 25rem;
+    margin-top: 2rem;
 }
 
-.goods-inserter {
+.goods-inserter, .goods-updater, .goods-deleter {
     width: 25em;
     min-height: 30em;
     border: 1px solid var(--olive);
@@ -116,20 +116,24 @@ table tbody tr:nth-child(even) {
     padding: 1.5em;
 }
 
-.goods-inserter form {
+.goods-updater, .goods-deleter {
+    min-height: 20em;
+}
+
+.goods-inserter form, .goods-updater form, .goods-deleter form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.goods-inserter label {
+.goods-inserter label, .goods-updater label, .goods-deleter label {
     color: var(--white);
     margin-bottom: .3em;
     font-size: 1.2rem;
 }
 
-.goods-inserter input, .goods-inserter select {
+.goods-inserter input, .goods-inserter select, .goods-updater input, .goods-deleter input {
     border: 1px solid var(--olive);
     margin-bottom: 1.5em;
     outline: none;
@@ -143,7 +147,7 @@ table tbody tr:nth-child(even) {
     text-align: center;
 }
 
-.goods-inserter button {
+.goods-inserter button, .goods-updater button, .goods-deleter button {
     width: 30%;
     padding: .5em;
     cursor: pointer;
@@ -159,17 +163,24 @@ label span {
     color: var(--red);
 }
 
-.goods-inserter button:hover {
+.goods-inserter button:hover, .goods-updater button:hover, .goods-deleter button:hover {
     background-color: var(--green);
     transition: .5s ease-out;
 }
 
-.success, .fail {
+.success-ins, .success-upd, .success-del, .fail-ins, .fail-upd, .fail-del {
     color: var(--green);
     text-align: center;
     margin-top: 1em;
 }
 
-.fail {
+.fail-ins, .fail-upd, .fail-del {
     color: var(--red);
+}
+
+.update-info {
+    font-size: .9rem;
+    color: var(--grey);
+    text-align: center;
+    margin-bottom: 1.5rem;
 }

@@ -29,7 +29,7 @@ function fetchGoodsStockFromDatabase() {
     let lastComma = categoriesString.lastIndexOf(',');
     let correctedCategories = categoriesString.substring(0, lastComma);
     
-    clearTableBody();
+    tableBody.replaceChildren();
 
     if (pickedCategories.length > 0) {
         fetch(`/goods_stock/${correctedCategories}`)
@@ -39,7 +39,6 @@ function fetchGoodsStockFromDatabase() {
 }
 
 function fillTableWithReturnedData(data) {
-    clearTableBody();
 
     for (let i = 0; i < data.length; i++) {
         let row = document.createElement('tr');
@@ -55,19 +54,11 @@ function fillTableWithReturnedData(data) {
     }
 }
 
-function clearTableBody() {
-    const existingRows = tableBody.children;
-
-    for (let i = 0; i < existingRows.length; i++) {
-        tableBody.removeChild(existingRows[i]);
-    }
-}
-
-const obligatoryNewGoodInputs = document.querySelectorAll('.obligatory');
+const obligatoryNewGoodsInputs = document.querySelectorAll('.goods-inserter .obligatory');
 const addNewItemButton = document.getElementById("add-item-button");
 
 addNewItemButton.addEventListener('click', e => {
-    obligatoryNewGoodInputs.forEach(input => {
+    obligatoryNewGoodsInputs.forEach(input => {
 
         if (input.value == '') {
             e.preventDefault();
@@ -75,7 +66,35 @@ addNewItemButton.addEventListener('click', e => {
             input.style.backgroundColor = '#FCD8D6';
         }
     })
-})
+});
+
+const obligatoryUpdateGoodsInputs = document.querySelectorAll('.goods-updater .obligatory');
+const updateItemButton = document.getElementById("update-item-button");
+
+updateItemButton.addEventListener('click', e => {
+    obligatoryUpdateGoodsInputs.forEach(input => {
+
+        if (input.value == '') {
+            e.preventDefault();
+            input.style.border = '1px solid #E21D12';
+            input.style.backgroundColor = '#FCD8D6';
+        }
+    })
+});
+
+const obligatoryDeleteGoodsInputs = document.querySelectorAll('.goods-deleter .obligatory');
+const deleteItemButton = document.getElementById("delete-item-button");
+
+deleteItemButton.addEventListener('click', e => {
+    obligatoryDeleteGoodsInputs.forEach(input => {
+
+        if (input.value == '') {
+            e.preventDefault();
+            input.style.border = '1px solid #E21D12';
+            input.style.backgroundColor = '#FCD8D6';
+        }
+    })
+});
 
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

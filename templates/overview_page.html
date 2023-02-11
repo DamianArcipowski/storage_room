@@ -48,36 +48,78 @@
                 </tbody>
             </table>
         </div>
-        <p class="title new-goods">Insert new goods</p>
-        <div class="goods-inserter">
-            <form action="" method="POST">
-                <label for="category">Category <span>*</span></label>
-                <select class="obligatory" name="category">
-                    <option value="T-shirts">T-shirts</option>
-                    <option value="Bottoms">Bottoms</option>
-                    <option value="Shoes">Shoes</option>
-                    <option value="Fleeces">Fleeces</option>
-                    <option value="Office supplies">Office supplies</option>
-                </select>
-                <label for="size">Size</label>
-                <input name="size" type="text">
-                <label for="color">Color</label>
-                <input name="color" type="text">
-                <label for="sku">Sku <span>*</span></label>
-                <input class="obligatory" name="sku" type="text">
-                <label for="unit">Unit <span>*</span></label>
-                <input class="obligatory" name="unit" type="text">
-                <label for="amount">Amount <span>*</span></label>
-                <input class="obligatory" name="amount" type="number" min="0">
-                <button id="add-item-button" type="submit">Add item</button>
-            </form>
-            {% with messages = get_flashed_messages(with_categories = true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <p class="{{ category }}">{{ message }}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+        <div style="width: 100%; display: flex; justify-content: space-evenly">
+            <div>
+                <p class="title new-goods">Insert new goods</p>
+                <div class="goods-inserter">
+                    <form action="" method="POST">
+                        <label for="category">Category <span>*</span></label>
+                        <select class="obligatory" name="category">
+                            <option value="T-shirts">T-shirts</option>
+                            <option value="Bottoms">Bottoms</option>
+                            <option value="Shoes">Shoes</option>
+                            <option value="Fleeces">Fleeces</option>
+                            <option value="Office supplies">Office supplies</option>
+                        </select>
+                        <label for="size">Size</label>
+                        <input name="size" type="text">
+                        <label for="color">Color</label>
+                        <input name="color" type="text">
+                        <label for="sku">Sku <span>*</span></label>
+                        <input class="obligatory" name="sku" type="text">
+                        <label for="unit">Unit <span>*</span></label>
+                        <input class="obligatory" name="unit" type="text">
+                        <label for="amount">Amount <span>*</span></label>
+                        <input class="obligatory" name="amount" type="number" min="0">
+                        <button id="add-item-button" name="form-sender" value="insert" type="submit">Insert</button>
+                    </form>
+                    {% with messages = get_flashed_messages(with_categories = true, category_filter = ['success-ins', 'fail-ins']) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <p class="{{ category }}">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div>
+                <p class="title update-goods">Update amount of goods</p>
+                <div class="goods-updater">
+                    <p class="update-info">Type only the amount of incoming goods, if SKU exists in database,
+                                            system will sum existing goods with incomes automatically.</p>
+                    <form action="" method="POST">
+                        <label for="sku">Sku <span>*</span></label>
+                        <input class="obligatory" name="sku" type="text">
+                        <label for="amount">Amount <span>*</span></label>
+                        <input class="obligatory" name="amount" type="number" min="0">
+                        <button id="update-item-button" name="form-sender" value="update" type="submit">Update</button>
+                    </form>
+                    {% with messages = get_flashed_messages(with_categories = true, category_filter = ['success-upd', 'fail-upd']) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <p class="{{ category }}">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div>
+                <p class="title update-goods">Delete amount of goods</p>
+                <div class="goods-deleter">
+                    <form action="" method="POST">
+                        <label for="sku">Sku <span>*</span></label>
+                        <input class="obligatory" name="sku" type="text">
+                        <button id="delete-item-button" name="form-sender" value="delete" type="submit">Delete</button>
+                    </form>
+                    {% with messages = get_flashed_messages(with_categories = true, category_filter = ['success-del', 'fail-del']) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <p class="{{ category }}">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
         </div>
     </div>
 </body>

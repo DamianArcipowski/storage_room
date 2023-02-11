@@ -1,5 +1,6 @@
 # storage_room
-Project of storage room enabling control of delivering and issued goods.
+Project of storage room enabling control of delivering and issuing goods.
+Developed with Python + Flask framework, PostgreSQL used as database.
 
 # How to start
 First we have to create an virtual environment and activate it:

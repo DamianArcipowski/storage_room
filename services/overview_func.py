@@ -20,3 +20,17 @@ def is_sku_in_database(sku):
     sku = cursor.fetchone()
     conn.close()
     return sku
+
+def update_amount_of_goods(sku, amount):
+    conn = SQLConnectionPG(server).conn
+    cursor = conn.cursor()
+    cursor.execute("""Update store.goods_stock SET amount = """+str(amount)+""" WHERE sku = '"""+sku+"""'""")
+    conn.commit()
+    conn.close()
+    
+def delete_good_from_database(sku):
+    conn = SQLConnectionPG(server).conn
+    cursor = conn.cursor()
+    cursor.execute("""Delete FROM store.goods_stock WHERE sku = '"""+sku+"""'""")
+    conn.commit()
+    conn.close()
